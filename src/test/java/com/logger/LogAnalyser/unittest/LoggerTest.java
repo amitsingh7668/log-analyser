@@ -21,8 +21,7 @@ public class LoggerTest {
 	@BeforeEach
 	public void init() throws InterruptedException, IOException
 	{
-			eventlist= (List<AlertEntity>)li.handle(false).getData();
-			
+			eventlist= (List<AlertEntity>)li.handle(false).getData();	
 	}
 	
 	@Test
@@ -39,6 +38,12 @@ public class LoggerTest {
 		AlertEntity expectedEvent = new AlertEntity("6d74B34DcdBFba1C91",7,"APPLICATION_LOG","95.146.39",true);
 		AlertEntity actualEvent = eventlist.stream().filter(g->g.getId().equals("6d74BDcdBFba1C91")).findFirst().get();
 		assertNotEquals(expectedEvent,actualEvent );
+	}
+	
+	@Test
+	public void longerEventSize() throws InterruptedException, IOException
+	{
+		assertEquals(600,eventlist.size());
 	}
 
 }

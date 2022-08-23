@@ -68,14 +68,17 @@ public class LogAnalyserHandler {
 
 				}
 				if (alertList.size() == 100) {
-					if (dbCall)
-						alertRepository.saveAll(alertList);
 					alertListPerm.addAll(alertList);
+					if (dbCall) {
+						LOGGER.info("Record pushed into Db count :- " +alertListPerm.size());
+						alertRepository.saveAll(alertList);
+					}
 					alertList.clear();
 				}
 			}
-			if (dbCall)
+			if (dbCall) {
 				alertRepository.saveAll(alertList);
+			}
 			sr.setData(alertListPerm);
 			sr.setDate(new Date());
 			sr.setHttpstatus(HttpStatus.OK);
@@ -89,7 +92,6 @@ public class LogAnalyserHandler {
 			LOGGER.error(ex.getLocalizedMessage());
 			LOGGER.error(ex.toString());
 		}
-		System.out.println(sr.getStatus() + " --   ");
 		return sr;
 
 	}
