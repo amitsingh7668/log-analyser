@@ -21,7 +21,8 @@ public class LoggerTest {
 	@BeforeEach
 	public void init() throws InterruptedException, IOException
 	{
-			eventlist= (List<AlertEntity>)li.handle(false).getData();	
+			eventlist= (List<AlertEntity>)li.handle(false).getData();
+			
 	}
 	
 	@Test
@@ -43,7 +44,7 @@ public class LoggerTest {
 	@Test
 	public void longerEventSize() throws InterruptedException, IOException
 	{
-		assertEquals(600,eventlist.size());
+		assertEquals(632,eventlist.size());
 	}
 
 }

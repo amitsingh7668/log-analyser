@@ -109,6 +109,12 @@ public class AlertEntity {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "AlertEntity [id=" + id + ", timetaken=" + timetaken + ", type=" + type + ", host=" + host + ", alert="
+				+ alert + "]";
+	}
 	
 
 }
