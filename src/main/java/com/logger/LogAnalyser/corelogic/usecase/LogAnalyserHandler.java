@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -43,7 +45,7 @@ public class LogAnalyserHandler {
 
 		SuccessResponse sr = new SuccessResponse();
 		List<LogEvent> loglist = new ArrayList<LogEvent>();
-		List<AlertEntity> alertListPerm = new ArrayList<AlertEntity>();
+		Set<AlertEntity> alertListPerm = new HashSet<AlertEntity>();
 
 		LOGGER.info("Parsing the events and persisting the alerts. This may take a while...");
 		try {
@@ -99,6 +101,7 @@ public class LogAnalyserHandler {
 			LOGGER.error(ex.getLocalizedMessage());
 			LOGGER.error(ex.toString());
 		}
+		LOGGER.info("Total alert raised :- "+alertListPerm.size());
 		return sr;
 
 	}
